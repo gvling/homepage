@@ -13,6 +13,7 @@
     "cross-env": "^5.1.4",
     "material-ui": "next",
     "npm-run-all": "^4.1.2",
+    "react-scripts-ts": "^2.14.0",
     "ts-loader": "^4.2.0",
     "tslint": "^5.9.1",
     "typescript": "^2.8.1",
