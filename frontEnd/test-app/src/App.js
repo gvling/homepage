@@ -50,9 +50,8 @@ class RecipeReviewCard extends React.Component {
   };
 
   handleScroll = (event) => {
-      let scrollTop = event.srcElement.body.scrollTop,
-          itemTranslate = Math.min(0, scrollTop/3 - 60);
-    console.log(itemTranslate)
+    var scrollTop = event.srcElement.body.scrollTop;
+    console.log(event.srcElement.body)
   };
   handleExpandClick = () => {
     this.setState({ expanded: !this.state.expanded });
@@ -62,7 +61,7 @@ class RecipeReviewCard extends React.Component {
     const { classes } = this.props;
 
     return (
-      <div style={{height: '100%'}}>
+      <div id={'container'} style={{height: '100%'}}>
         <Zoom in={this.state.zoomOut}>
           <Card className={classes.card}>
             <CardHeader
