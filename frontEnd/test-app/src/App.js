@@ -9,7 +9,7 @@ import Typography from 'material-ui/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Zoom from 'material-ui/transitions/Zoom';
-import IMG_FF7 from './assets/images/ff7_1.jpg';
+import IMG_BK from './assets/images/gvlng.jpg';
 
 const styles = theme => ({
   card: {
@@ -17,7 +17,7 @@ const styles = theme => ({
     height: '100%',
   },
   media: {
-    height: '70%',
+    height: '100%',
   },
   actions: {
     display: 'flex',
@@ -30,7 +30,7 @@ const styles = theme => ({
     marginLeft: 'auto',
   },
   expandOpen: {
-    transform: 'rotate(180deg)',
+    transform: 'rotate(18000deg)',
   }
 });
 
@@ -74,7 +74,7 @@ class RecipeReviewCard extends React.Component {
             />
             <CardMedia
               className={classes.media}
-              image={IMG_FF7}
+              image={IMG_BK}
               title="Contemplative Reptile"
             />
             <CardContent>
