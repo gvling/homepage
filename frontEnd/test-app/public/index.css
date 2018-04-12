@@ -1,0 +1,8 @@
+div {
+  overflow: scroll;
+}
+
+div::-webkit-scrollbar {
+    display: none;
+}
+/* TODO: move all index style to this file*/

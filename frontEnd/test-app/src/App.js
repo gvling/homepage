@@ -9,7 +9,7 @@ import Typography from 'material-ui/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Zoom from 'material-ui/transitions/Zoom';
-import IMG_BK from './assets/images/gvlng.jpg';
+import IMG_BG from './assets/images/gvlng.jpg';
 
 const styles = theme => ({
   card: {
@@ -30,28 +30,31 @@ const styles = theme => ({
     marginLeft: 'auto',
   },
   expandOpen: {
-    transform: 'rotate(18000deg)',
+    transform: 'rotate(180deg)',
   }
 });
 
 class RecipeReviewCard extends React.Component {
   state = { expanded: false,
             zoomOut: true,
-          };
+  };
 
   componentDidMount() {
-      window.addEventListener('scroll', this.handleScroll);
-      console.log('add scroll event listener');
+    var element = document.getElementById("container");
+    element.addEventListener('scroll', this.handleScroll(element));
+    console.log('component mounted');
   };
 
   componentWillUnmount() {
-      window.removeEventListener('scroll', this.handleScroll);
-      console.log('remove scroll event listener');
+    var element = document.getElementById("container");
+    element.removeEventListener('scroll', this.handleScroll(element));
+    console.log('remove mounted component');
   };
 
-  handleScroll = (event) => {
-    var scrollTop = event.srcElement.body.scrollTop;
-    console.log(event.srcElement.body)
+  handleScroll = (element) => {
+    var scrollx = element.scrollLeft;
+    var scrolly = element.scrollTop;
+    console.log('scroll: ', scrollx, scrolly);
   };
   handleExpandClick = () => {
     this.setState({ expanded: !this.state.expanded });
@@ -61,21 +64,19 @@ class RecipeReviewCard extends React.Component {
     const { classes } = this.props;
 
     return (
+      <div style={{height: '100%'}}>
       <div id={'container'} style={{height: '100%'}}>
         <Zoom in={this.state.zoomOut}>
           <Card className={classes.card}>
-            <CardHeader
-              action={
-                <IconButton>
-                  <MoreVertIcon />
-                </IconButton>
-              }
-            />
             <CardMedia
               className={classes.media}
-              image={IMG_BK}
+              image={IMG_BG}
               title="Contemplative Reptile"
-            />
+            >
+              <IconButton>
+                <MoreVertIcon />
+              </IconButton>
+            </CardMedia>
             <CardContent>
               <Typography component="p">
                 hogehoge
@@ -102,6 +103,7 @@ class RecipeReviewCard extends React.Component {
             </Collapse>
           </Card>
         </Zoom>
+      </div>
       </div>
     );
   }
