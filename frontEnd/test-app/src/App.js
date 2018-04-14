@@ -36,25 +36,22 @@ const styles = theme => ({
 
 class RecipeReviewCard extends React.Component {
   state = { expanded: false,
-            zoomOut: true,
+            zoomIn: true,
   };
 
   componentDidMount() {
-    var element = document.getElementById("container");
-    element.addEventListener('scroll', this.handleScroll(element));
     console.log('component mounted');
   };
 
   componentWillUnmount() {
-    var element = document.getElementById("container");
-    element.removeEventListener('scroll', this.handleScroll(element));
-    console.log('remove mounted component');
+    var element = document.getElementById('container');
   };
 
-  handleScroll = (element) => {
-    var scrollx = element.scrollLeft;
-    var scrolly = element.scrollTop;
-    console.log('scroll: ', scrollx, scrolly);
+  handleScroll = () => {
+    var scrolly = document.getElementById('container').scrollTop;
+    if(scrolly > 1000) {
+      this.setState({zoomIn: false});
+    }
   };
   handleExpandClick = () => {
     this.setState({ expanded: !this.state.expanded });
@@ -65,9 +62,8 @@ class RecipeReviewCard extends React.Component {
 
     return (
       <div style={{height: '100%'}}>
-      <div id={'container'} style={{height: '100%'}}>
-        <Zoom in={this.state.zoomOut}>
-          <Card className={classes.card}>
+        <Zoom in={this.state.zoomIn} timeout={1000}>
+          <Card className={classes.card} id={'container'} style={{overflowY: 'scroll'}} onScroll={this.handleScroll}>
             <CardMedia
               className={classes.media}
               image={IMG_BG}
@@ -103,7 +99,6 @@ class RecipeReviewCard extends React.Component {
             </Collapse>
           </Card>
         </Zoom>
-      </div>
       </div>
     );
   }
