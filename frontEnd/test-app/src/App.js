@@ -8,7 +8,6 @@ import IconButton from 'material-ui/IconButton';
 import Typography from 'material-ui/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Zoom from 'material-ui/transitions/Zoom';
 import IMG_BG from './assets/images/gvlng.jpg';
 
 const styles = theme => ({
@@ -35,8 +34,9 @@ const styles = theme => ({
 });
 
 class RecipeReviewCard extends React.Component {
-  state = { expanded: false,
-            zoomIn: true,
+  state = {
+    expanded: false,
+    cardTransform: 'none'
   };
 
   componentDidMount() {
@@ -44,30 +44,47 @@ class RecipeReviewCard extends React.Component {
   };
 
   componentWillUnmount() {
-    var element = document.getElementById('container');
+    console.log('component unmounted');
   };
 
-  handleScroll = () => {
-    var scrolly = document.getElementById('container').scrollTop;
-    if(scrolly > 1000) {
-      this.setState({zoomIn: false});
+  _onScrollCard = () => {
+    const scrolled = document.getElementById('container').scrollTop;
+    if(scrolled > 1) {
+      this.setState({
+        cardTransform: 'scale(0.9, 0.9)',
+      });
     }
   };
-  handleExpandClick = () => {
+
+  _onClickCard = () => {
+    console.log('clicked card')
+    document.getElementById('container').scrollTop = 0;
+    this.setState({ cardTransform: 'scale(1, 1)' });
+  };
+
+  _onClickExpand = () => {
     this.setState({ expanded: !this.state.expanded });
   };
 
   render() {
     const { classes } = this.props;
+    const cardStyle = {
+      overflowY: 'scroll',
+      height: '100%',
+      width: '100%',
+      expanded: false,
+      transform: this.state.cardTransform,
+      transition: 'transform 0.5s',
+    };
 
     return (
       <div style={{height: '100%'}}>
-        <Zoom in={this.state.zoomIn} timeout={1000}>
-          <Card className={classes.card} id={'container'} style={{overflowY: 'scroll'}} onScroll={this.handleScroll}>
+          <Card className={classes.card} id={'container'} style={cardStyle} onScroll={this._onScrollCard}>
             <CardMedia
               className={classes.media}
               image={IMG_BG}
               title="Contemplative Reptile"
+              onClick={this._onClickCard}
             >
               <IconButton>
                 <MoreVertIcon />
@@ -83,7 +100,7 @@ class RecipeReviewCard extends React.Component {
                 className={classnames(classes.expand, {
                   [classes.expandOpen]: this.state.expanded,
                 })}
-                onClick={this.handleExpandClick}
+                onClick={this._onClickExpand}
                 aria-expanded={this.state.expanded}
                 aria-label="Show more"
               >
@@ -98,7 +115,6 @@ class RecipeReviewCard extends React.Component {
               </CardContent>
             </Collapse>
           </Card>
-        </Zoom>
       </div>
     );
   }
