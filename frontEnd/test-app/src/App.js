@@ -9,11 +9,11 @@ import Typography from 'material-ui/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import IMG_BG from './assets/images/gvlng.jpg';
+import './App.css';
 
 const styles = theme => ({
-  card: {
-    maxWidth: '100%',
-    height: '100%',
+  caed: {
+    maxHeight: '100%',
   },
   media: {
     height: '100%',
@@ -58,7 +58,7 @@ class RecipeReviewCard extends React.Component {
 
   _onClickCard = () => {
     console.log('clicked card')
-    document.getElementById('container').scrollTop = 0;
+//    document.getElementById('container').scrollTop = 0;
     this.setState({ cardTransform: 'scale(1, 1)' });
   };
 
@@ -69,7 +69,6 @@ class RecipeReviewCard extends React.Component {
   render() {
     const { classes } = this.props;
     const cardStyle = {
-      overflowY: 'scroll',
       height: '100%',
       width: '100%',
       expanded: false,
@@ -79,7 +78,8 @@ class RecipeReviewCard extends React.Component {
 
     return (
       <div style={{height: '100%'}}>
-          <Card className={classes.card} id={'container'} style={cardStyle} onScroll={this._onScrollCard}>
+        <div id={'container'} onScroll={this._onScrollCard}>
+          <Card className={classes.card} id={'card'} style={cardStyle}>
             <CardMedia
               className={classes.media}
               image={IMG_BG}
@@ -115,6 +115,7 @@ class RecipeReviewCard extends React.Component {
               </CardContent>
             </Collapse>
           </Card>
+        </div>
       </div>
     );
   }
