@@ -12,9 +12,6 @@ import IMG_BG from './assets/images/gvlng.jpg';
 import './App.css';
 
 const styles = theme => ({
-  caed: {
-    maxHeight: '100%',
-  },
   media: {
     height: '100%',
   },
@@ -79,7 +76,44 @@ class RecipeReviewCard extends React.Component {
     return (
       <div style={{height: '100%'}}>
         <div id={'container'} onScroll={this._onScrollCard}>
-          <Card className={classes.card} id={'card'} style={cardStyle}>
+          <Card class={'card'} style={cardStyle}>
+            <CardMedia
+              className={classes.media}
+              image={IMG_BG}
+              title="Contemplative Reptile"
+              onClick={this._onClickCard}
+            >
+              <IconButton>
+                <MoreVertIcon />
+              </IconButton>
+            </CardMedia>
+            <CardContent>
+              <Typography component="p">
+                hogehoge
+              </Typography>
+            </CardContent>
+            <CardActions className={classes.actions} disableActionSpacing>
+              <IconButton
+                className={classnames(classes.expand, {
+                  [classes.expandOpen]: this.state.expanded,
+                })}
+                onClick={this._onClickExpand}
+                aria-expanded={this.state.expanded}
+                aria-label="Show more"
+              >
+                <ExpandMoreIcon />
+              </IconButton>
+            </CardActions>
+            <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+              <CardContent>
+                <Typography paragraph variant="body2">
+                  fugafuga
+                </Typography>
+              </CardContent>
+            </Collapse>
+          </Card>
+
+          <Card class={'card'} style={cardStyle}>
             <CardMedia
               className={classes.media}
               image={IMG_BG}
