@@ -10,15 +10,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import IMG_BG from '../assets/images/gvlng.jpg';
 import IMG_BW_BG from '../assets/images/gvlng_bw.jpg';
-import '../styles/App.css';
+import '../styles/ZoomingCard.css';
 
 const styles = theme => ({
-  media: {
-    height: '100%',
-  },
-  actions: {
-    display: 'flex',
-  },
   expand: {
     transform: 'rotate(0deg)',
     transition: theme.transitions.create('transform', {
@@ -58,28 +52,23 @@ class ZoomingCard extends React.Component {
   render() {
     const { classes } = this.props;
     const cardStyle = {
-      height: '100%',
-      width: '100%',
       expanded: false,
       transform: this.props.cardTransform.transform,
-      transitionProperty: 'transform',
-      transitionDuration: '0.75s',
     };
 
     return (
       <div style={{height: '100%'}}>
         <Card className={'card'} style={cardStyle}>
           <CardMedia
-            className={classes.media}
+            className={'cardMedia'}
             onClick={this._onClickCard}
             image={this.props.cardTransform.cardImageTransform ? IMG_BW_BG : IMG_BG}
             style={{
-              transitionProperty: 'background-image',
-              transitionDuration: '5s',
             }}
           >
             <IconButton>
-              <MoreVertIcon />
+              <MoreVertIcon
+              />
             </IconButton>
           </CardMedia>
           <CardContent>

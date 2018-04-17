@@ -1,0 +1,18 @@
+.card {
+  height: 100%;
+  width: 100%;
+  transition-property: transform;
+  transition-duration: 0.75s;
+}
+
+.cardMedia {
+  height: 100%;
+  transition-property: background-image;
+  transition-duration: 4s;
+}
+
+.actions {
+  display: flex;
+}
+
+
