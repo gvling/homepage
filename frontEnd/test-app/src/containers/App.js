@@ -23,6 +23,17 @@ class MainPage extends React.Component {
         cardTransfrom: 'scale(0.9, 0.9)',
       });
     }
+    if(scrolled === 0) {
+      this.setState({
+        cardTransfrom: 'scale(1, 1)',
+      });
+    }
+  };
+
+  _onClickCard = () => {
+     this.setState({
+       cardTransfrom: 'scale(1, 1)',
+     });
   };
 
   render() {
@@ -31,6 +42,7 @@ class MainPage extends React.Component {
         <div id={'container'} onScroll={this._onScrollCard}>
           <ZoomingCard
             cardTransform={this.state.cardTransfrom}
+            onClickCard={this._onClickCard}
           />
         </div>
       </div>

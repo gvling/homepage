@@ -32,7 +32,7 @@ const styles = theme => ({
 
 interface Props {
   cardTransform: any;
-
+  onClickCard: any;
 }
 
 class ZoomingCard extends React.Component {
@@ -50,10 +50,9 @@ class ZoomingCard extends React.Component {
   };
 
   _onClickCard = () => {
-// TODO connect to props
     console.log('clicked card')
 //    document.getElementById('container').scrollTop = 0;
-    this.setState({ cardTransform: 'scale(1, 1)' });
+    this.props.onClickCard();
   };
 
   _onClickExpand = () => {
@@ -72,7 +71,7 @@ class ZoomingCard extends React.Component {
 
     return (
       <div style={{height: '100%'}}>
-        <Card class={'card'} style={cardStyle}>
+        <Card className={'card'} style={cardStyle}>
           <CardMedia
             className={classes.media}
             image={IMG_BG}
