@@ -21,7 +21,6 @@ class MainPage extends React.Component {
   };
 
   _onScrollCard = (event) => {
-    //const scrolled = document.getElementById('container').scrollTop;
     const scrolleDirection = this.state.preScrollPosition - event.currentTarget.scrollTop;
     if( scrolleDirection > 0 ) {
       // scroll direction TOP
