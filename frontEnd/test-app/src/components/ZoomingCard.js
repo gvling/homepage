@@ -9,6 +9,7 @@ import Typography from 'material-ui/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import IMG_BG from '../assets/images/gvlng.jpg';
+import IMG_BW_BG from '../assets/images/gvlng_bw.jpg';
 import '../styles/App.css';
 
 const styles = theme => ({
@@ -29,11 +30,6 @@ const styles = theme => ({
     transform: 'rotate(180deg)',
   }
 });
-
-interface Props {
-  cardTransform: any;
-  onClickCard: any;
-}
 
 class ZoomingCard extends React.Component {
 
@@ -65,7 +61,7 @@ class ZoomingCard extends React.Component {
       height: '100%',
       width: '100%',
       expanded: false,
-      transform: this.props.cardTransform,
+      transform: this.props.cardTransform.transform,
       transition: 'transform 0.5s',
     };
 
@@ -74,7 +70,7 @@ class ZoomingCard extends React.Component {
         <Card className={'card'} style={cardStyle}>
           <CardMedia
             className={classes.media}
-            image={IMG_BG}
+            image={this.props.cardTransform.cardImageTransform ? IMG_BW_BG : IMG_BG}
             title="Contemplative Reptile"
             onClick={this._onClickCard}
           >

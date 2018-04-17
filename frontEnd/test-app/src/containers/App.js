@@ -5,7 +5,11 @@ import ZoomingCard from '../components/ZoomingCard'
 class MainPage extends React.Component {
 
   state = {
-    cardTransfrom: 'none'
+    cardTransform: {
+      transfor: 'none',
+      cardImageTransform: false,
+    },
+    preScrollPosition: 0,
   };
 
   componentDidMount() {
@@ -16,23 +20,41 @@ class MainPage extends React.Component {
     console.log('component unmounted');
   };
 
-  _onScrollCard = () => {
-    const scrolled = document.getElementById('container').scrollTop;
-    if(scrolled > 1) {
+  _onScrollCard = (event) => {
+    //const scrolled = document.getElementById('container').scrollTop;
+    const scrolleDirection = this.state.preScrollPosition - event.currentTarget.scrollTop;
+    if( scrolleDirection > 0 ) {
+      // scroll direction TOP
       this.setState({
-        cardTransfrom: 'scale(0.9, 0.9)',
+        preScrollPosition: event.currentTarget.scrollTop,
+      });
+    }else{
+      // scroll direction BOTTOM
+      this.setState({
+        cardTransform: {
+          transform: 'scale(0.9)',
+          cardImageTransform: true,
+        },
+        preScrollPosition: event.currentTarget.scrollTop,
       });
     }
-    if(scrolled === 0) {
+    // reset card transformation
+    if(event.currentTarget.scrollTop === 0) {
       this.setState({
-        cardTransfrom: 'scale(1, 1)',
+        cardTransform: {
+          transfor: 'none',
+          cardImageTransform: false,
+        },
       });
     }
   };
 
   _onClickCard = () => {
      this.setState({
-       cardTransfrom: 'scale(1, 1)',
+       cardTransform: {
+         transfor: 'none',
+         cardImageTransform: false,
+       },
      });
   };
 
@@ -41,7 +63,8 @@ class MainPage extends React.Component {
       <div style={{height: '100%'}}>
         <div id={'container'} onScroll={this._onScrollCard}>
           <ZoomingCard
-            cardTransform={this.state.cardTransfrom}
+            cardTransform={this.state.cardTransform}
+            cardImageTransform={this.state.cardImageTransform}
             onClickCard={this._onClickCard}
           />
         </div>
