@@ -3,8 +3,6 @@ import Card, { CardMedia, CardContent, CardActions } from 'material-ui/Card';
 import IconButton from 'material-ui/IconButton';
 import Typography from 'material-ui/Typography';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import IMG_BG from '../assets/images/gvlng.jpg';
-import IMG_BW_BG from '../assets/images/gvlng_bw.jpg';
 import '../styles/ZoomingCard.css';
 
 class ZoomingCard extends React.Component {
@@ -17,10 +15,10 @@ class ZoomingCard extends React.Component {
     console.log('component unmounted');
   };
 
-  _onClickCard = () => {
+  _onClickCard = (event) => {
     console.log('clicked card')
 //    document.getElementById('container').scrollTop = 0;
-    this.props.onClickCard();
+    this.props.onClickCard(event);
   };
 
   render() {
@@ -34,7 +32,7 @@ class ZoomingCard extends React.Component {
           <CardMedia
             className={'cardMedia'}
             onClick={this._onClickCard}
-            image={this.props.cardTransform.cardImageTransform ? IMG_BW_BG : IMG_BG}
+            image={this.props.cardTransform.cardImageTransform ? this.props.cardImages[0] : this.props.cardImages[1]}
             style={{
             }}
           >
