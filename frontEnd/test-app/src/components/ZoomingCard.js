@@ -62,7 +62,8 @@ class ZoomingCard extends React.Component {
       width: '100%',
       expanded: false,
       transform: this.props.cardTransform.transform,
-      transition: 'transform 0.5s',
+      transitionProperty: 'transform',
+      transitionDuration: '0.75s',
     };
 
     return (
@@ -70,9 +71,12 @@ class ZoomingCard extends React.Component {
         <Card className={'card'} style={cardStyle}>
           <CardMedia
             className={classes.media}
-            image={this.props.cardTransform.cardImageTransform ? IMG_BW_BG : IMG_BG}
-            title="Contemplative Reptile"
             onClick={this._onClickCard}
+            image={this.props.cardTransform.cardImageTransform ? IMG_BW_BG : IMG_BG}
+            style={{
+              transitionProperty: 'background-image',
+              transitionDuration: '5s',
+            }}
           >
             <IconButton>
               <MoreVertIcon />

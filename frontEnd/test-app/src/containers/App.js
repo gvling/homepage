@@ -61,7 +61,7 @@ class MainPage extends React.Component {
   render() {
     return (
       <div style={{height: '100%'}}>
-        <div id={'container'} onScroll={this._onScrollCard}>
+        <div id={'container'} style={{WebKitScrollbar: {display: 'none'}}} onScroll={this._onScrollCard}>
           <ZoomingCard
             cardTransform={this.state.cardTransform}
             cardImageTransform={this.state.cardImageTransform}
