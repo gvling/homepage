@@ -15,39 +15,36 @@ class ZoomingCard extends React.Component {
     console.log('component unmounted');
   };
 
-  _onClickCard = (event) => {
-    console.log('clicked card')
-//    document.getElementById('container').scrollTop = 0;
-    this.props.onClickCard(event);
-  };
-
   render() {
     const cardStyle = {
       transform: this.props.cardTransform.transform,
     };
 
     return (
-      <div style={{height: '100%'}}>
+      <div
+        style={{height: '100%'}}
+        onClick={this.props.onClickCard}
+      >
         <Card className={'card'} style={cardStyle}>
           <CardMedia
             className={'cardMedia'}
-            onClick={this._onClickCard}
             image={this.props.cardTransform.cardImageTransform ? this.props.cardImages[0] : this.props.cardImages[1]}
             style={{
             }}
           >
-            <IconButton>
-              <MoreVertIcon
-              />
-            </IconButton>
+            <div className={'cardContent'}>
+              <IconButton>
+                <MoreVertIcon
+                />
+              </IconButton>
+            </div>
           </CardMedia>
           <CardContent>
-            <Typography gutterBottom variant="headline" component="h2">
-              Lizard
+            <Typography gutterBottom variant="headline" component="h1">
+              Gvling
             </Typography>
             <Typography component="p">
-              Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-              across all continents except Antarctica
+              hogehoge
             </Typography>
           </CardContent>
           <CardActions className={'cardActionContent'}>
