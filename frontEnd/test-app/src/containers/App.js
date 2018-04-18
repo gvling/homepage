@@ -18,18 +18,10 @@ class MainPage extends React.Component {
   };
 
   componentDidMount() {
-    Scroll.Events.scrollEvent.register('begin', () => {
-      console.log("begin", arguments);
-    });
-    Scroll.Events.scrollEvent.register('end', () => {
-      console.log("end", arguments);
-    });
     console.log('component mounted');
   };
 
   componentWillUnmount() {
-    Scroll.Events.scrollEvent.remove('begin');
-    Scroll.Events.scrollEvent.remove('end');
     console.log('component unmounted');
   };
 
@@ -67,16 +59,16 @@ class MainPage extends React.Component {
         transfor: 'none',
         cardImageTransform: false,
       },
+    }, () => {
+      this.scrollToTop();
     });
-    // event.target.parentNode.parentNode.parentNode.scrollTop = 0;
-    //document.getElementById('container').scrollTop = 0;
     console.log('clicked card');
   };
 
   scrollToElement = (elementName) => {
     Scroll.scroller.scrollTo(elementName, {
       duration: 750,
-      delay: 0,
+      delay: 50,
       smooth: true,
     });
     console.log('scroll to', elementName);
@@ -88,17 +80,20 @@ class MainPage extends React.Component {
       delay: 0,
       smooth: true,
     });
+    setTimeout(() => {
+      console.log(document.getElementById('cardContainer').scrollTop);
+      //document.getElementById('cardContainer').scrollTop=0;
+    }, 700);
     console.log('scroll to top');
   };
 
   render() {
     return (
-      <div  onScroll={this._onScrollCard}>
-      <Test/>
+      <div style={{height: '100%'}}>
+      <div id={'cardContainer'} onScroll={this._onScrollCard}>
         <Scroll.Element
           name={'mainCard'}
           className={'scrollElement'}
-          onClick={() => this.scrollToTop('mainCard')}
         >
           <ZoomingCard
             cardTransform={this.state.cardTransform}
@@ -107,6 +102,8 @@ class MainPage extends React.Component {
             cardImages={[IMG_BW_BG, IMG_BG]}
           />
         </Scroll.Element>
+      </div>
+      <Test/>
       </div>
     );
   }
