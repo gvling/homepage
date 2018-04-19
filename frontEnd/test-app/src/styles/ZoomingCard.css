@@ -10,9 +10,9 @@
 .cardMedia {
   height: 100%;
   transition-property: background-image;
-  transition-duration: 4s;
+  transition-duration: 3s;
   -webkit-transition-property: background-image;
-  -webkit-transition-duration: 4s;
+  -webkit-transition-duration: 3s;
 }
 
 .cardContent {

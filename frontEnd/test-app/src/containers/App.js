@@ -1,5 +1,4 @@
 import React from 'react';
-import * as Scroll from 'react-scroll';
 import '../styles/App.css';
 import ZoomingCard from '../components/ZoomingCard';
 import Test from '../components/test';
@@ -58,52 +57,20 @@ class MainPage extends React.Component {
       cardTransform: {
         transfor: 'none',
         cardImageTransform: false,
-      },
-    }, () => {
-      this.scrollToTop();
+      }
     });
     console.log('clicked card');
   };
 
-  scrollToElement = (elementName) => {
-    Scroll.scroller.scrollTo(elementName, {
-      duration: 750,
-      delay: 50,
-      smooth: true,
-    });
-    console.log('scroll to', elementName);
-  };
-
-  scrollToTop = () => {
-    Scroll.animateScroll.scrollToTop({
-      duration: 750,
-      delay: 0,
-      smooth: true,
-    });
-    setTimeout(() => {
-      console.log(document.getElementById('cardContainer').scrollTop);
-      //document.getElementById('cardContainer').scrollTop=0;
-    }, 700);
-    console.log('scroll to top');
-  };
-
   render() {
     return (
-      <div style={{height: '100%'}}>
       <div id={'cardContainer'} onScroll={this._onScrollCard}>
-        <Scroll.Element
-          name={'mainCard'}
-          className={'scrollElement'}
-        >
-          <ZoomingCard
-            cardTransform={this.state.cardTransform}
-            cardImageTransform={this.state.cardImageTransform}
-            onClickCard={() => this._onClickCard()}
-            cardImages={[IMG_BW_BG, IMG_BG]}
-          />
-        </Scroll.Element>
-      </div>
-      <Test/>
+        <ZoomingCard
+          cardTransform={this.state.cardTransform}
+          cardImageTransform={this.state.cardImageTransform}
+          onClickCard={() => this._onClickCard()}
+          cardImages={[IMG_BW_BG, IMG_BG]}
+        />
       </div>
     );
   }

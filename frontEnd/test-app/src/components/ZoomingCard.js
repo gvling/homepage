@@ -44,7 +44,7 @@ class ZoomingCard extends React.Component {
               Gvling
             </Typography>
             <Typography component="p">
-              hogehoge
+              <a href={'https://pixiv.me/gvling'}>More</a>
             </Typography>
           </CardContent>
           <CardActions className={'cardActionContent'}>
