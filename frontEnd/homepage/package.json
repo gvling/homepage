@@ -4,12 +4,13 @@
   "private": true,
   "dependencies": {
     "@material-ui/icons": "^1.0.0-beta.42",
-    "material-ui": "next",
+    "material-ui": "^1.0.0-beta.47",
     "material-ui-image": "^2.1.1",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
     "react-redux": "^5.0.7",
     "react-scripts": "1.1.4",
+    "react-scroll": "^1.7.12",
     "redux": "^3.7.2",
     "typeface-roboto": "^0.0.54"
   },
