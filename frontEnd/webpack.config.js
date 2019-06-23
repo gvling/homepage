@@ -33,6 +33,14 @@ module.exports = {
           fix: true
         }
       }]
+    },{
+      test: /\.(gif|png|jpg)$/,
+      use: [{
+        loader: 'url-loader',
+        options: {
+          limit: 51200
+        }
+      }]
     }]
   },
   devServer: {
