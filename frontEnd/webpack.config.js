@@ -1,7 +1,7 @@
 publidDir = __dirname + '/public';
 
 module.exports = {
-  mode: "development",
+  mode: 'development',
   entry: [
     './src/index.js'
   ],
@@ -23,13 +23,13 @@ module.exports = {
     },{
       // enforce: 'pre'がついていないローダーより早く処理が実行される
       // babel-loaderで変換する前にコードを検証したいため、指定が必要
-      enforce: "pre",
+      enforce: 'pre',
       test: /\.jsx?$/,
       exclude: /node_modules/,
       use: [{
         loader: 'eslint-loader',
         options: {
-          formatter: require("eslint-friendly-formatter"),
+          formatter: require('eslint-friendly-formatter'),
           fix: true
         }
       }]
@@ -45,6 +45,8 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    contentBase: publidDir
+    contentBase: publidDir,
+    host: '0.0.0.0',
+    disableHostCheck: true
   }
 };
