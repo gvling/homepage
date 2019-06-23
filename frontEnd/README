@@ -31,3 +31,9 @@ $ yarn add --dev webpack webpack-cli webpack-dev-server
 $ yarn add --dev @babel/core @babel/preset-env babel-loader
 $ yarn add --dev react react-dom
 ```
+
+# Install eslint and initial
+```
+$ yarn add --dev eslint
+$ ./node_modules/.bin/eslint --init
+```
