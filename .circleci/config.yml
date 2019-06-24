@@ -3,6 +3,12 @@ jobs:
   build:
     docker:
       - image: circleci/node:10.16.0
+    working_directory: ~/homepage/frontEnd
+    branches:
+      only:
+        - develop
     steps:
       - checkout
       - run: echo "hello world"
+      - run: yarn build
+
