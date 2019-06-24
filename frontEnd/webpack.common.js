@@ -1,12 +1,13 @@
-publidDir = __dirname + '/public';
+const path = require('path');
+pubDir = path.resolve(__dirname, './public');
+
 
 module.exports = {
-  mode: 'development',
   entry: [
     './src/index.js'
   ],
   output: {
-    path: publidDir,
+    path: pubDir,
     publicPath: '/',
     filename: 'bundle.js'
   },
@@ -21,8 +22,16 @@ module.exports = {
         }
       }]
     },{
-      // enforce: 'pre'がついていないローダーより早く処理が実行される
-      // babel-loaderで変換する前にコードを検証したいため、指定が必要
+      test: /\.(gif|png|jpg)$/,
+      use: [{
+        loader: 'url-loader',
+        options: {
+          limit: 51200
+        }
+      }]
+    },{
+      // enforce: 'pre'$B$,$D$$$F$$$J$$%m!<%@!<$h$jAa$/=hM}$,<B9T$5$l$k(B
+      // babel-loader$B$GJQ49$9$kA0$K%3!<%I$r8!>Z$7$?$$$?$a!";XDj$,I,MW(B
       enforce: 'pre',
       test: /\.jsx?$/,
       exclude: /node_modules/,
@@ -33,20 +42,6 @@ module.exports = {
           fix: true
         }
       }]
-    },{
-      test: /\.(gif|png|jpg)$/,
-      use: [{
-        loader: 'url-loader',
-        options: {
-          limit: 51200
-        }
-      }]
     }]
   },
-  devServer: {
-    historyApiFallback: true,
-    contentBase: publidDir,
-    host: '0.0.0.0',
-    disableHostCheck: true
-  }
 };

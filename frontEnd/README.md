@@ -37,3 +37,9 @@ $ yarn add --dev react react-dom
 $ yarn add --dev eslint
 $ ./node_modules/.bin/eslint --init
 ```
+
+# Install imagemin-webpack-plugin
+```
+apk --update add autoconf automake gcc make g++ zlib-dev
+yarn add imagemin-webpack-plugin --production
+```
