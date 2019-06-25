@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  checkout:
+  build:
     docker:
       - image: circleci/node:10.16.0
     working_directory: ~/homepage/frontEnd
