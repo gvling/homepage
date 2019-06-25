@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:10.16.0
-    working_directory: ~/homepage
+    working_directory: ~/homepage/frontEnd
     steps:
       - checkout
       - run: cd ~/homepage/frontEnd
