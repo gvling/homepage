@@ -3,15 +3,11 @@ jobs:
   checkout:
     docker:
       - image: circleci/node:10.16.0
-    working_directory: ~/homepage
-    steps:
-      - checkout
-
-  build:
-    docker:
-      - image: circleci/node:10.16.0
     working_directory: ~/homepage/frontEnd
     steps:
+      - checkout:
+        path: ~/homepage
+      - run: yarn
       - run: yarn
       - run: yarn build
 
