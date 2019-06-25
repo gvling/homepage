@@ -3,11 +3,10 @@ jobs:
   build:
     docker:
       - image: circleci/node:10.16.0
-    working_directory: ~/homepage/frontEnd
+    working_directory: ~/
     steps:
-      - checkout:
-        path: ~/homepage
-      - run: yarn
+      - checkout
+      - run: cd ~/homepage/frontEnd
       - run: yarn
       - run: yarn build
 
