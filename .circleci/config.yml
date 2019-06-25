@@ -1,11 +1,15 @@
 version: 2.1
 jobs:
-  build:
+  checkout:
     docker:
       - image: circleci/node:10.16.0
-    working_directory: ~/homepage/frontEnd
+    working_directory: ~/homepage
     steps:
       - checkout
-      - run: echo "hello world"
+
+  build:
+    working_directory: ~/homepage/frontEnd
+    steps:
+      - run: yarn
       - run: yarn build
 
