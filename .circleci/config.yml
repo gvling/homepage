@@ -22,13 +22,8 @@ jobs:
       - add_ssh_keys:
         fingerprints:
           -"74:e6:1a:39:21:ba:d0:3d:0c:98:bc:47:99:55:1a:16"
-      - run:
-        name: ssh-key-scan
-        command: ssh-keyscan -p ${HIST_PORT} ${HOST_NAME} >> ~/.ssh/known_hosts
-      - deploy:
-        name: deploy-to-production-server
-        command:
-          rsync -av --delete ./public/ ${USER_NAME}@${HOST_NAME}:/opt/app/public/
+      - run: ssh-keyscan -p ${HIST_PORT} ${HOST_NAME} >> ~/.ssh/known_hosts
+      - run: rsync -av --delete ./public/ ${USER_NAME}@${HOST_NAME}:/opt/app/public/
 
 workflows:
   version: 2
