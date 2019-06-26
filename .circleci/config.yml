@@ -1,6 +1,8 @@
 version: 2
 jobs:
   build-job:
+    executor:
+      name: default
     docker:
       - image: circleci/node:10.16.0
     steps:
@@ -9,6 +11,8 @@ jobs:
       - run: yarn build
 
   deploy-job:
+    executor:
+      name: default
     docker:
       - image: circleci/node:10.16.0
     steps:
