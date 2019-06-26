@@ -1,9 +1,6 @@
 version: 2.1
 jobs:
   build:
-    branches:
-      ignore:
-      - release
     docker:
       - image: circleci/node:10.16.0
     steps:
