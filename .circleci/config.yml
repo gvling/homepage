@@ -26,14 +26,14 @@ workflows:
   build_only:
     jobs:
       - build:
-        filters:
-          branches:
-            ignore:
-              - release
+          filters:
+            branches:
+              ignore:
+                - release
   build_and_deploy:
     jobs:
       - deploy:
-        filters:
-          branches:
-            only:
-              - release
+          filters:
+            branches:
+              only:
+                - release
