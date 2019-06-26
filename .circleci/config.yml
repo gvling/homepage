@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:10.16.0
-    filters:
+    branches:
       ignore:
       - release
     steps:
@@ -13,7 +13,7 @@ jobs:
   deploy:
     docker:
       - image: circleci/node:10.16.0
-    filters:
+    branches:
       only:
       - release
     steps:
