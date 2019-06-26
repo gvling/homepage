@@ -19,6 +19,7 @@ jobs:
           fingerprints:
             -"74:e6:1a:39:21:ba:d0:3d:0c:98:bc:47:99:55:1a:16"
       - run: ssh-keyscan -p ${HOST_PORT} ${HOST_NAME} >> ~/.ssh/known_hosts
+      - run: sudo apt-get install -y rsync
       - run: rsync -av --delete ./public/ ${USER_NAME}@${HOST_NAME}:/opt/app/public/
 
 workflows:
