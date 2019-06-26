@@ -3,6 +3,9 @@ jobs:
   build:
     docker:
       - image: circleci/node:10.16.0
+    branches:
+      only:
+      - release
     steps:
       - checkout
       - run: yarn
