@@ -31,14 +31,14 @@ workflows:
   build_only:
     jobs:
       - build-job
-        filters:
-          branches:
-            ignore:
-              - release
+    filters:
+      branches:
+        ignore:
+          - release
   build_and_deploy:
     jobs:
       - deploy-job
-        filters:
-          branches:
-            only:
-              - release
+    filters:
+      branches:
+        only:
+          - release
